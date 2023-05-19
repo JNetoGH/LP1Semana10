@@ -19,7 +19,7 @@ namespace PlayerManager4
             
             if (comparison == 0)
                 return 0;
-
+            
             if (comparison == 1 )
             {
                 if (_ascendantMode)
