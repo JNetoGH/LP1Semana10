@@ -131,11 +131,14 @@ namespace PlayerManager3
         /// </param>
         private static void ListPlayers(IEnumerable<Player> playersToList)
         {
+
+            List<Player> list = playersToList as List<Player>;
+            list.Sort();
             Console.WriteLine("\nList of players");
             Console.WriteLine("-------------\n");
-
+            
             // Show each player in the enumerable object
-            foreach (Player p in playersToList)
+            foreach (Player p in list)
             {
                 Console.WriteLine($" -> {p.Name} with a score of {p.Score}");
             }

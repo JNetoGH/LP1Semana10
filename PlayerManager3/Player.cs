@@ -17,7 +17,7 @@ namespace PlayerManager3
         {
             if (other.Score == Score)
                 return 0;
-            if (other.Score > Score)
+            if (other.Score < Score)
                 return -1;
             return 1;
         }
