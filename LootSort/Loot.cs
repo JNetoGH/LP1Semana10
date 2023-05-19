@@ -44,7 +44,18 @@ namespace LootSort
             return String.Compare(Description, other.Description, StringComparison.Ordinal);
         }
 
-    
+        public override int GetHashCode()
+        {
+            return Kind.GetHashCode() ^ Value.GetHashCode() ^ Description.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+                return false;
+            Loot otherPlayer = (Loot)obj;
+            return Kind == otherPlayer.Kind && Value == otherPlayer.Value && Description == otherPlayer.Description;
+        }
         
         /// <summary>
         /// Return a nicely formatted string representing the loot instance.
