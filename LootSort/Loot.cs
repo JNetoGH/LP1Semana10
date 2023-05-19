@@ -1,10 +1,12 @@
+using System;
+
 namespace LootSort
 {
     /// <summary>
     /// The Loot class should implement IComparable<Loot>
     /// and override GetHashCode() and Equals()
     /// </summary>
-    public class Loot
+    public class Loot: IComparable<Loot>
     {
         /// <summary>Type of loot.</summary>
         public LootType Kind { get; }
@@ -28,6 +30,22 @@ namespace LootSort
             Value = value;
         }
 
+        public int CompareTo(Loot other)
+        {
+            // name
+            if (!Kind.ToString().Equals(other.Kind.ToString()))
+                return String.Compare(Kind.ToString(), other.Kind.ToString(), StringComparison.Ordinal);
+
+            // value
+            if (Value != other.Value)
+                return Value > other.Value ? -1 : 1;
+            
+            // description
+            return String.Compare(Description, other.Description, StringComparison.Ordinal);
+        }
+
+    
+        
         /// <summary>
         /// Return a nicely formatted string representing the loot instance.
         /// </summary>
